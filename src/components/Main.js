@@ -126,10 +126,11 @@ function Model({ ...props }) {
 function Picker(){
     const snap = useSnapshot(state)
     return(
-        <div style ={{display : snap.current ? "block": "none"}}>
+        <div style ={{display : snap.current ? "block": "none", height: "0.05rem", width: "0.05rem"}}>
             <HexColorPicker className = "picker"
             color = {snap.items[snap.current]} 
             onChange = {(color) => (state.items[snap.current] = color)} />
+
             <h1>{snap.current}</h1>
         </div>
     )
@@ -139,7 +140,7 @@ export default function Main() {
   return (
     <>
     <Picker/>
-    <Canvas camera = {{position: [0,5, 20]}}>
+    <Canvas camera = {{position: [0,5, 20]}} style = {{position: "absolute"}}>
       <ambientLight intensity={0.5} />
       <spotLight intensity={0.3} position = {[5, 20, 20]}/>
       <Suspense fallback ={null}>
